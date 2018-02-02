@@ -2,9 +2,10 @@ FROM microsoft/windowsservercore
 
 LABEL Description="openemr" Version="5.0.0-4"
 
+COPY xampp-openemr-5.0.0-4.zip c:\openemr.zip
+
 RUN powershell -Command \
     $ErrorActionPreference = 'Stop'; \
-    Invoke-WebRequest -Method Get -Uri http://downloads.sourceforge.net/openemr/xampp-openemr-5.0.0-4.zip -Outfile c:\openemr.zip ; \
     Expand-Archive -Path c:\openemr.zip -DestinationPath c:\ ; \
     Remove-Item c:\openemr.zip -Force
 
